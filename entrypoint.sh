@@ -17,14 +17,23 @@ function delayedPluginInstall {
     cp /home/developer/.jdk.table.xml /home/developer/.IdeaIC2016.2/config/options/jdk.table.xml
 }
 
-if [ ! -d /home/developer/.IdeaIC2016.2/config/plugins/Go ]; then
-    # We are running with a non-Docker contained volume for IntelliJ prefs so we need to setup the plugin again
-    delayedPluginInstall
-fi
 
-if [ -d /home/developer/.IdeaIC2016.2 ]; then
-    # Ensure proper permissions
-    sudo chown developer:developer -R /home/developer/.IdeaIC2016.2
-fi
 
-exec /opt/intellij/bin/idea.sh
+if [ "$1" = "intellij" ]; then
+    echo "Starting with intelli : $1, exec $@"
+    if [ ! -d /home/developer/.IdeaIC2016.2/config/plugins/Go ]; then
+	# We are running with a non-Docker contained volume for IntelliJ prefs so we need to setup the plugin again
+	delayedPluginInstall
+    fi
+    
+    if [ -d /home/developer/.IdeaIC2016.2 ]; then
+	# Ensure proper permissions
+	sudo chown developer:developer -R /home/developer/.IdeaIC2016.2
+    fi
+    
+    exec /opt/intellij/bin/idea.sh
+    
+else
+    echo "Starting you own command : $1, exec $@"
+    exec $@
+fi

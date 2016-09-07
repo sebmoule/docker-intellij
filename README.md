@@ -11,8 +11,6 @@ The image contains the following software:
 
 ## Running
 
-**NOTE**
-As of Docker 1.10(?) you need to specify full paths for mounts.
 
 By running the following command you'll be able to start the container
 
@@ -24,12 +22,12 @@ docker run -tdi \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
            -v ${HOME}/.IdeaIC2016.1_docker:/home/developer/.IdeaIC2016.1 \
            -v ${GOPATH}:/home/developer/go \
-           dlsniper/docker-intellij
+           sebmoule/docker-intellij
 ```
 
 The command will do the following:
 
-- save the IDE preferences into `<your-HOME-dir>/.IdeaIC2016.1_docker`
+- save the IDE preferences into `<your-HOME-dir>/.IdeaIC2016`
 - mounts the GOPATH from your computer to the one in the container. This
 assumes you have a single directory. If you have multiple directories in your
 GOPATH, then see below how you can customize this to run correctly.
@@ -56,7 +54,7 @@ docker run -tdi \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
            -v ${PREF_DIR}:/home/developer/.IdeaIC2016.1 \
            -v ${GOPATH}:/home/developer/go \
-           dlsniper/docker-intellij
+           sebmoule/docker-intellij
 ```
 
 ## Updating the container
@@ -64,7 +62,7 @@ docker run -tdi \
 To update the container, simply run:
 
 ```shell
-docker pull dlsniper/docker-intellij
+docker pull sebmoule/docker-intellij
 ```
 
 Each of the plugins can be updated individually at any time, and other plugins
