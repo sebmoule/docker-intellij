@@ -8,7 +8,7 @@ ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
-ADD ./jdk.table.xml /home/developer/.IdeaIC2016.2/config/options/jdk.table.xml
+ADD ./jdk.table.xml /home/developer/.IdeaIC2016.2.3/config/options/jdk.table.xml
 ADD ./jdk.table.xml /home/developer/.jdk.table.xml
 
 
@@ -35,12 +35,12 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
     sudo chown root:root /usr/bin/sudo && \
     chmod 4755 /usr/bin/sudo && \
 
-    mkdir -p /home/developer/.IdeaIC2016.2/config/options && \
-    mkdir -p /home/developer/.IdeaIC2016.2/config/plugins && \
+    mkdir -p /home/developer/.IdeaIC2016.2.3/config/options && \
+    mkdir -p /home/developer/.IdeaIC2016.2.3/config/plugins && \
 
 
     echo 'Downloading IntelliJ IDEA' && \
-    wget https://download.jetbrains.com/idea/ideaIC-2016.2.tar.gz -O /tmp/intellij.tar.gz -q && \
+    wget https://download.jetbrains.com/idea/ideaIC-2016.2.3.tar.gz -O /tmp/intellij.tar.gz -q && \
     echo 'Installing IntelliJ IDEA' && \
     mkdir -p /opt/intellij && \
     tar -xf /tmp/intellij.tar.gz --strip-components=1 -C /opt/intellij && \
@@ -53,8 +53,8 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
     rm -f /tmp/go.tar.gz && \
 
     echo 'Installing Go plugin' && \
-    wget https://plugins.jetbrains.com/files/5047/27278/Go-0.12.1724.zip -O /home/developer/.IdeaIC2016.2/config/plugins/go.zip -q && \
-    cd /home/developer/.IdeaIC2016.2/config/plugins/ && \
+    wget https://plugins.jetbrains.com/files/5047/27278/Go-0.12.1724.zip -O /home/developer/.IdeaIC2016.2.3/config/plugins/go.zip -q && \
+    cd /home/developer/.IdeaIC2016.2.3/config/plugins/ && \
     unzip -q go.zip && \
     rm go.zip && \
 

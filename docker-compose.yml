@@ -6,20 +6,19 @@ services:
     image: sebmoule/docker-intellij
     environment:
       - "DISPLAY=${DISPLAY}"
-#    privileged: true
     hostname: intellij
     tty: true
-#    pid: host
     stdin_open: true
     network_mode: host 
-#    command: bash
-#    user: root
     volumes:
       - ${HOME}:/home/developer
-#      - ${HOME}/.Xauthority:/home/developer/.Xauthority
-#      - ${HOME}/.IdeaIC2016.1:/root/.IdeaIC2016.1
-#      - ${HOME}/IdeaProjects:/root/IdeaProjects
       - /mnt/filer/work:/mnt/filer/work
       - /tmp/.X11-unix:/tmp/.X11-unix
 
+
+
+
+#      - ${HOME}/.Xauthority:/home/developer/.Xauthority
+#      - ${HOME}/.IdeaIC2016.1:/root/.IdeaIC2016.1
+#      - ${HOME}/IdeaProjects:/root/IdeaProjects
 
